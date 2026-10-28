@@ -54,7 +54,7 @@
     ansible_python_interpreter: /usr/bin/python3
     packages: "{{ kolla_ansible_package_dependencies | select | list }}"
     missing_packages: "{{ packages | difference(ansible_facts.packages.keys()) }}"
-  hen: ansible_facts.os_family != "Flatcar"
+  when: ansible_facts.os_family != "Flatcar"
 
 - name: Ensure source code checkout parent directory exists
   file:
