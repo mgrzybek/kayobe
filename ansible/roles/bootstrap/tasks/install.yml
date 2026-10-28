@@ -44,3 +44,4 @@
       when: missing_packages is truthy
   vars:
     missing_packages: "{{ bootstrap_package_dependencies | difference(ansible_facts.packages.keys()) }}"
+  when: ansible_facts.os_family != "Flatcar"
